@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :user do
     username { "user123" }
     password { '123' }
-    wins
-    losses
+    wins { 0 }
+    losses { 0 }
   end
 end
