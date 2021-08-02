@@ -1,9 +1,18 @@
 <div>
-    <p>Here</p>
-
-    <h3><%= @player.name %></h3>
-    <% @player.cards.each do |card| %>
-
-        <%= image_tag("/../../assets/images/cards/#{card.img}.png", class: "rounded float-start") %>
+    <h3><%= @game.player.name %></h3>
+    <% @game.player.cards.each do |card| %>
+        <%= image_tag("#{card.img}.png", size: "100x160", alt: "#{card.img}") %>
     <% end %>
+
+    <h3><%= @game.dealer.name %></h3>
+    <% @game.dealer.cards.length.times do |index| %>
+        <% if index == 0 %>
+            <%= image_tag("back_of_card.jpg", size: "100x160") %>
+        <% else %>
+            <%= image_tag("#{@game.dealer.cards[index].img}.png", size: "100x160") %>
+        <% end %>
+    <% end %>
+
+    <a href="" class="btn btn-dark" role="button" data-method="post">Hit</a>
+    <a href="" class="btn btn-dark" role="button" data-method="post">Stand</a>
 </div>
