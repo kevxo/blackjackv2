@@ -13,6 +13,6 @@
         <% end %>
     <% end %>
 
-    <a href="" class="btn btn-dark" role="button" data-method="post">Hit</a>
-    <a href="" class="btn btn-dark" role="button" data-method="post">Stand</a>
+    <%= button_to 'Hit', "/api/v1/game_actions", method: :post, params: {player_hand: @game.player.cards} %>
+    <%= button_to 'Stand', {test: "Hello"} , :method=>:post, :class=>"btn btn-dark" %>
 </div>
