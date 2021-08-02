@@ -1,3 +1,9 @@
 <div>
     <p>Here</p>
+
+    <h3><%= @player.name %></h3>
+    <% @player.cards.each do |card| %>
+
+        <%= image_tag("/../../assets/images/cards/#{card.img}.png", class: "rounded float-start") %>
+    <% end %>
 </div>
