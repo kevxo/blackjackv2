@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
 
   root to: 'home#index'
+  get '/game', to: 'game#index'
 end
