@@ -31,6 +31,17 @@
 ![Database](https://user-images.githubusercontent.com/63522369/127962296-86fe0f8c-b1cf-4cb9-987b-5f588efb9527.png)
 
 ## Screen Shots of the App
+- ### User Sign Up
 
+![Screen Shot 2021-08-03 at 4 15 41 AM](https://user-images.githubusercontent.com/63522369/127982389-2d197a74-6ef6-4fc9-b94d-efa7a540de02.png)
 
+- ### User Login
+![Screen Shot 2021-08-03 at 4 15 55 AM](https://user-images.githubusercontent.com/63522369/127982489-de264d27-7104-4e19-82cc-217a89dadfe0.png)
 
+- ### Landing Page
+
+![Screen Shot 2021-08-03 at 4 15 30 AM](https://user-images.githubusercontent.com/63522369/127982566-259d6b09-0692-40d1-89f3-088c7556394c.png)
+
+- ### Game Play
+
+![Screen Shot 2021-08-03 at 4 15 14 AM](https://user-images.githubusercontent.com/63522369/127982673-48896440-4928-47c4-9b75-64a0cd6e4e6d.png)
