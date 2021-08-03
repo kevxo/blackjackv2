@@ -9,6 +9,8 @@ class GameFacade
 
             if player.card_score >= 22
                 game[:winner] = "Dealer is the winner"
+                player = User.find_by(username: username)
+                player.update(losses: (player.losses + 1))
             end
 
             return game
@@ -29,12 +31,18 @@ class GameFacade
 
             if player.card_score > dealer.card_score || dealer.card_score >= 22 && player.card_score <= 21
                 game[:winner] = username + ' is the winner'
+                player = User.find_by(username: username)
+                player.update(wins: (player.wins + 1))
             elsif player.card_score < dealer.card_score || player.card_score >= 22 && dealer.card_score <= 21
                 game[:winner] = "Dealer is the winner"
+                player = User.find_by(username: username)
+                player.update(losses: (player.losses + 1))
             elsif player.card_score == dealer.card_score && player.card_score <= 21
                 game[:winner] = "Tie"
             else
                 game[:winner] = "Both Lose"
+                player = User.find_by(username: username)
+                player.update(losses: (player.losses + 1))
             end
             
             return game
