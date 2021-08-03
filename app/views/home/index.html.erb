@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col" id="grid-col">
+      <img class="img-responsive" src="https://lh3.googleusercontent.com/hh4tYfy2J5v_uau3Bkw3L_fCuaau40DA7ess8f-detzd2o3LTJ9Zxk6TtnWnmZ7VA9cIQ-MlqhfqfPJpqzK5p2nwhvsO2QbTt_mfxjHszeZMVWwm4cw2A4Z2mr7kN7_TETQsOlI6iw=w2400" width="500" height="300">
+    </div>
+    <div class="col" id="grid-col">
+      Welcome to BlackJack, here you will be able to play a game of blackjack with the dealer for now. In the future we are trying to 
+      implement the ability to play with friends. We also have big plans as well, once we finish implementing everything we need for BlackJack, we will also add other casino games such as Poker. Our team thank's you for playing a game of blackjack and hope you enjoy your time.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col" id="grid-col">
+      <img class="img-responsive" src="https://lh3.googleusercontent.com/hmb3gI0k8d4Dj7sLdCYSwqDzW85qqvCrDLi2bqPrz_8Yn8ffItugEuy6ONK-ZZlYqIvYWEROe-uMy28tgdj6WtQhZq3eiquU2z2MFzbXdew-bJn_YZJm3oyEbFEZ886wJXgs9VhDww=w2400" width="500" height="300">
+    </div>
+
+    <div class="col" id="grid-col">
+      <h1> How To Play: </h1>
+      Blackjack at its core is a very simple game. The goal is to try to
+      get your hand as close as possible to 21. If you are able to get 21 you automatically win. The dealer will start by giving out the cards until each player has 2 cards. From there it will be up to you
+      if you decide you want to <b>Hit</b> which means to take another card to your hand, <b>Stand</b> which means to not take any further cards, or <b>Surrender</b> which means to forfeit half of your bet if you think you cannot beat the dealer. The betting system basically allows you to bet before each game, so lets say you made a bet of $100 and you win, you will get you $100 back plus the dealer will give you $100 since thats what you bet before the game, and if you win with Blackjack aka win with a 21 you will get $150 in stead because for blackjack, you get 1.5 times your bet.
+    </div>
+  </div>
+
+ 
+  <div class="row justify-content-md-center">
+    <%@members.each do |member|%>
+      <div class="col-lg-3 mb-4">
+        <div class="card text-center">
+            <%= image_tag(member[:image], size: "100x300", class: "card-img-top") %>
+            <div class="card-body">
+                <h5 class="card-title"><%= member[:name] %></h5>
+              
+                <a href=<%= member[:linkedin] %> class="btn btn-outline-primary btn-sm">
+                  <img alt="linkedin" src="https://img.icons8.com/nolan/64/linkedin.png" width="50" height="50">
+                </a>
+                <a href=<%= member[:github] %> class="btn btn-outline-secondary btn-sm">
+                  <img alt="github" src="https://img.icons8.com/nolan/64/github.png" width="50" height="50">
+                </a>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
