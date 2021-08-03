@@ -15,12 +15,11 @@
     end
 end
 
-4.times do
-    faces = ["10","jack", "king", "queen"]
-    suites = ["clubs", "diamonds", "hearts", "spades"]
-
-    suites.each_with_index do |suit, index|
-        Card.create!(number: 10, suit: suit, img: "#{faces[index]}_of_#{suites[index]}")
+faces = ["10","jack", "king", "queen"]
+suites = ["clubs", "diamonds", "hearts", "spades"]
+faces.each do |face|
+    suites.each do |suit|
+        Card.create!(number: 10, suit: suit, img: "#{face}_of_#{suit}")
     end
 end
 

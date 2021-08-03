@@ -30,4 +30,18 @@ describe 'Sessions' do
     expect(response).to redirect_to "/"
     expect(response.status).to eq(302)
   end
+
+  it "should logout current user" do
+    user = create(:user)
+
+    login = {
+      'username': user.username,
+      'password': user.password
+    }
+
+    delete "/api/v1/sessions/#{user.id}"
+
+    expect(response).to redirect_to "/"
+    expect(response.status).to eq(302)
+  end
 end

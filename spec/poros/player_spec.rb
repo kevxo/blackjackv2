@@ -39,8 +39,6 @@ RSpec.describe Player do
     
     player = Player.new(user.username, cards)
 
-    expect(player.card_score).to eq(0)
-    player.calculate_card_score
     expect(player.card_score).to eq(12)
 
     player.add_card(card3)
