@@ -1,8 +1,9 @@
 class Game
-    attr_accessor :player, :dealer, :deck
-    def initialize(username, data = nil)
-        if data == nil
-            @deck = Card.get_shuffled_deck
+    attr_accessor :player, :dealer, :deck, :winner
+    def initialize(username, data = nil, winner = nil)
+        @winner = winner
+        if data == nil || !data.include?(:player_hand) && !data.include?(:dealer_hand) 
+            data != nil && data.length < 4 || data.length ? @deck = Card.find(data) : @deck = Card.get_shuffled_deck
             @player = Player.new(username, [@deck[-1], @deck[-3]])
             @dealer = Player.new('Dealer', [@deck[-2], @deck[-4]])
             
