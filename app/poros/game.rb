@@ -3,7 +3,7 @@ class Game
     def initialize(username, data = nil, winner = nil)
         @winner = winner
         if data == nil || !data.include?(:player_hand) && !data.include?(:dealer_hand) 
-            data != nil && data.length < 4 || data.length ? @deck = Card.find(data) : @deck = Card.get_shuffled_deck
+            data != nil && data.length < 4 ? @deck = Card.find(data) : @deck = Card.get_shuffled_deck
             @player = Player.new(username, [@deck[-1], @deck[-3]])
             @dealer = Player.new('Dealer', [@deck[-2], @deck[-4]])
             
