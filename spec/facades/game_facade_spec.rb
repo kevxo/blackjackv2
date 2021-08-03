@@ -150,4 +150,25 @@ RSpec.describe GameFacade do
     expect(response.has_key?(:winner)).to eq(true)
     expect(response[:winner]).to eq("Both Lose")
   end
+
+  it "Should make dealer draw if below 17" do
+    all_cards = Card.all
+    player_card_1 = all_cards[-1]
+    player_card_2 = all_cards[5]
+    player = [player_card_1.id, player_card_2.id]
+
+    dealer_card_1 = all_cards[1]
+    dealer_card_2 = all_cards[2]
+    dealer_card_3 = all_cards[3]
+    dealer = [dealer_card_1.id, dealer_card_2.id, dealer_card_3.id]
+    
+    deck = [all_cards[8].id,all_cards[9].id,all_cards[-2].id]
+    
+    user = create(:user)
+    
+    response = GameFacade.stand(user.username, player, dealer, deck)
+
+    expect(response[:deck].length).to eq(2)
+    expect(response[:dealer_hand].length).to eq(4)
+  end
 end
