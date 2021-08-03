@@ -7,8 +7,13 @@ Rails.application.routes.draw do
 
       post '/sessions', to: 'sessions#create'
       delete '/sessions/:user_id', to: 'sessions#destroy'
+
+      post '/game_actions', to: 'game_actions#create'
+      post '/game_actions/stand', to: 'game_actions#stand'
+      patch '/game_actions/:id', to: 'game_actions#update'
     end
   end
 
   root to: 'home#index'
+  get '/game', to: 'game#index'
 end
