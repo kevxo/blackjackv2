@@ -25,18 +25,18 @@
             <% else%>
                 <%= button_to 'Hit', "/api/v1/game_actions", method: :post, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck } %>
                 <%= button_to 'Stand', "/api/v1/game_actions/stand" , method: :post, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck }%>
-            <% end%>
 
-            <% @game.player.cards.each do |card| %>
-                <% if card.suit == "ace" %>
-                    <% if card.number == 11 %>
-                        <%= button_to 'Change value of Ace to 1', "/api/v1/game_actions/#{card.id}", method: :patch, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck } %>
-                    <% else %>
-                        <%= button_to 'Change value of Ace to 11', "/api/v1/game_actions/#{card.id}", method: :patch, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck } %>
+                <% @game.player.cards.each do |card| %>
+                    <% if card.suit == "ace" %>
+                        <% if card.number == 11 %>
+                            <%= button_to 'Change value of Ace to 1', "/api/v1/game_actions/#{card.id}", method: :patch, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck } %>
+                        <% else %>
+                            <%= button_to 'Change value of Ace to 11', "/api/v1/game_actions/#{card.id}", method: :patch, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck } %>
+                        <% end %>
                     <% end %>
                 <% end %>
-            <% end %>
 
+            <% end%>
 
         </div>
         <div class="col-lg-4 mb-4 text-center">
