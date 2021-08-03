@@ -8,7 +8,6 @@ class Api::V1::GameActionsController < ApplicationController
   end
 
   def update
-    # require 'pry'; binding.pry
     card = Card.find_by(id: params[:id])
     if card.number == 11
       card.update(number: 1)
