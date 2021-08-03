@@ -1,39 +1,61 @@
-<div>
-    <h3><%= @game.player.name %> | Wins: <%= current_user.wins %> | Losses:<%= current_user.losses %></h3> 
-    <% @game.player.cards.each do |card| %>
-        <%= image_tag("#{card.img}.png", size: "100x160", alt: "#{card.img}") %>
-        
-        <% if card.suit == "ace" %>
-            <% if card.number == 11 %>
-                <%= button_to 'Change value of Ace to 1', "/api/v1/game_actions/#{card.id}", method: :patch, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck } %>
-            <% else %>
-                <%= button_to 'Change value of Ace to 11', "/api/v1/game_actions/#{card.id}", method: :patch, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck } %>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-6 mb-4 text-center">
+            <h3><%= @game.player.name %></h3>
+        </div>
+
+        <div class="col-lg-6 mb-4 text-center">
+            <h3><%= @game.dealer.name %></h3>
+        </div>
+
+    </div>
+    <div class="row justify-content-md-center d-flex align-items-center ">
+        <div class="col-lg-4 mb-4 text-center">
+
+            <% @game.player.cards.each do |card| %>
+                <%= image_tag("#{card.img}.png", size: "100x160", alt: "#{card.img}") %>
             <% end %>
-        <% end %>
-    <% end %>
 
-    <% if @game.winner != nil %>
-        <h3><%= @game.dealer.name %></h3>
-        <% @game.dealer.cards.length.times do |index| %>
-            <%= image_tag("#{@game.dealer.cards[index].img}.png", size: "100x160") %>
-        <% end %>
+        </div>
+        <div class="col-lg-3 mb-4 justify-content-md-center text-center">
 
-        <h3><%= @game.winner %></h3>
+            <% if @game.winner != nil%>
+                <h3><%= @game.winner %></h3>
+                <%= button_to 'Play again', "/game", method: :get, params: { deck: @game.deck, play_again: true} %>
+            <% else%>
+                <%= button_to 'Hit', "/api/v1/game_actions", method: :post, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck } %>
+                <%= button_to 'Stand', "/api/v1/game_actions/stand" , method: :post, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck }%>
+            <% end%>
 
-        <%= button_to 'Play again', "/game", method: :get, params: { deck: @game.deck, play_again: true} %>
-    <% else %>
-
-        <h3><%= @game.dealer.name %></h3>
-        <% @game.dealer.cards.length.times do |index| %>
-            <% if index == 0 %>
-                <%= image_tag("back_of_card.jpg", size: "100x160") %>
-            <% else %>
-                <%= image_tag("#{@game.dealer.cards[index].img}.png", size: "100x160") %>
+            <% @game.player.cards.each do |card| %>
+                <% if card.suit == "ace" %>
+                    <% if card.number == 11 %>
+                        <%= button_to 'Change value of Ace to 1', "/api/v1/game_actions/#{card.id}", method: :patch, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck } %>
+                    <% else %>
+                        <%= button_to 'Change value of Ace to 11', "/api/v1/game_actions/#{card.id}", method: :patch, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck } %>
+                    <% end %>
+                <% end %>
             <% end %>
-        <% end %>
 
-        <%= button_to 'Hit', "/api/v1/game_actions", method: :post, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck } %>
-        <%= button_to 'Stand', "/api/v1/game_actions/stand" , method: :post, params: { player_hand: @game.player.cards, dealer_hand: @game.dealer.cards, deck: @game.deck }%>
-    <% end %>
+
+        </div>
+        <div class="col-lg-4 mb-4 text-center">
+
+            <% if @game.winner != nil %>
+                <% @game.dealer.cards.length.times do |index| %>
+                    <%= image_tag("#{@game.dealer.cards[index].img}.png", size: "100x160") %>
+                <% end %>
+            <% else %>
+                <% @game.dealer.cards.length.times do |index| %>
+                    <% if index == 0 %>
+                        <%= image_tag("back_of_card.jpg", size: "100x160") %>
+                    <% else %>
+                        <%= image_tag("#{@game.dealer.cards[index].img}.png", size: "100x160") %>
+                    <% end %>
+                <% end %>
+            <% end %>
+
+        </div>
+  </div>
 
 </div>
