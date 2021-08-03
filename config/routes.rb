@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       delete '/sessions/:user_id', to: 'sessions#destroy'
 
       post '/game_actions', to: 'game_actions#create'
+      post '/game_actions/stand', to: 'game_actions#stand'
     end
   end
 
