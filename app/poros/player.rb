@@ -8,7 +8,7 @@ class Player
     end
 
     def add_card(card)
-        @cards << card
+        @cards.push(card)
     end
 
     def calculate_card_score
